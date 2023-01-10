@@ -1,4 +1,26 @@
 
+:root {
+  --color-cards: #F3F3F3;
+
+  --gradient-first: #ffafdb;
+  --gradinet-second: #ffc3a0;
+
+  --color-icons: #ffc3a0;
+  --color-comment: #a2a2a2;
+}
+
+:root[data-color-scheme="dark"] {
+  --color-background-dark: #404258;
+  --color-cards-dark: #474E68;
+}
+
+:root[data-color-scheme="default"] {
+  --color-background: #eee;
+  --color-text: #3d405b;
+}
+
+
+
 * {
     margin-left: auto;
     margin-right: auto;
@@ -9,19 +31,18 @@
 body {
   margin: 0;
   padding: 0;
-  background: #eee;
 }
 
 .gradient-h2 {
     text-align: center;
     font-size: 25px;
-    background: -webkit-linear-gradient(#ffafbd, #ffc3a0);
+    background: -webkit-linear-gradient( var(--gradient-first) , var(--gradinet-second) );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 span.name-h2 {
-    background: -webkit-linear-gradient(#ffafbd, #ffc3a0);
+  background: -webkit-linear-gradient( var(--gradient-first) , var(--gradinet-second) );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -48,7 +69,6 @@ span.name-h2 {
 	line-height: 50px;
 	text-align: center;
 	color: #FFF;
-	color: rgba(255, 255, 255, 0.8);
 	-webkit-transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
 	-ms-transition: all 0.3s ease-in-out;
@@ -74,7 +94,7 @@ span.name-h2 {
 }
 
 .social-icons .fa-facebook, .fa-instagram, .fa-twitter, .fa-linkedin, .fa-envelope, .fa-github {
-  background-color: #ffc3a0;
+  background-color: var(--color-icons);
 }
 
 .name-school {
@@ -83,7 +103,7 @@ span.name-h2 {
 }
 
 span.date {
-  color: #a2a2a2;
+  color: var(--color-comment);
   margin-left: 20px;
 }
 
@@ -121,7 +141,6 @@ span.date {
 }
 
 div.card1 {
-  background-color: #FFBF7C;
   position: relative;
   flex: 1;
   max-width: 500px;
@@ -132,7 +151,6 @@ div.card1 {
 }
 
 .card2 {
-  background-color: #FECB96;
   position: relative;
   flex: 1;
   max-width: 760px;
@@ -143,7 +161,6 @@ div.card1 {
 }
 
 .card3 {
-  background-color: #FFD6AC;
   position: relative;
   flex: 1;
   max-width: 1540px;
@@ -154,7 +171,6 @@ div.card1 {
 }
 
 .card4 {
-  background-color: #FFD6AC;
   position: relative;
   flex: 1;
   max-width: 1540px;
@@ -184,7 +200,7 @@ input[type="checkbox"] {
   display: block;
   width: 40px;
   height: 20px;
-  background: #092c3e;
+  background: #404258;
   cursor: pointer;
   border-radius: 20px;
   overflow: hidden;
@@ -192,7 +208,7 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:checked ~ .check {
-  background: #fff;
+  background: var(--color-text);
 }
 
 .check::before {
@@ -209,6 +225,7 @@ input[type="checkbox"]:checked ~ .check {
 
 input[type="checkbox"]:checked ~ .check:before {
   transform: translateX(-50px);
+  background-color: #fff;
 }
 
 .check::after {
@@ -216,7 +233,7 @@ input[type="checkbox"]:checked ~ .check:before {
   position: absolute;
   top: 2px;
   left: 2px;
-  background-color: #092c3e;
+  background-color: #fff;
   width: 16px;
   height: 16px;
   border-radius: 50%;
@@ -226,6 +243,33 @@ input[type="checkbox"]:checked ~ .check:before {
 
 input[type="checkbox"]:checked ~ .check:after {
   transform: translateX(0px);
+}
+
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--color-background-dark);
+  }
+
+  .card1, .card2, .card3, .card4 {
+    background-color: var(--color-cards-dark);
+  }
+
+  h2 {
+    color: #fff;
+  }
+
+  p {
+    color: #fff;
+  }
+  
+  .social-icons .fa a {
+    color: var(--color-text);
+  }
+
+  .fa-star {
+    color: #fff;
+  }
 }
 
 @media (max-width: 992px) {

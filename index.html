@@ -8,27 +8,29 @@
 
     <link rel="stylesheet" href="./assets/style/style.css">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 
-    <script src=”https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js”></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     
 </head>
 <body>
 
     <div class="container">
         <div class="row">
-            <div class="card1" id="card1" style="background-color: #F3F3F3;">
+            <div class="card1" id="card1">
                 <img src="./assets/images/rajskoo.jpg" width="40%" style="border-radius: 50%; margin-left: 140px; margin-top: 30px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);">
                 <h2 style="text-align: center; position: relative; bottom: 15px;">Hi, I'm <span class="name-h2">Rajskoo</span>!</h2>
                 <p style="text-align: center; position: relative; bottom: 25px;">Front-end Web Designer</p>
             </div>
-            <div class="card1" id="card2" style="background-color: #F3F3F3;">
+            <div class="card1" id="card2">
                 <h2 class="gradient-h2">ABOUT ME <br></h2>
                 <p style="text-align: left; margin-left: 10px; margin-right: 10px; position: absolute;">Momentálne študujem odbor <a href="https://www.mechatronika.cool/" style="text-decoration: none; color: #FFBF7C;">'automobilová mechatronika'</a> na FEI STU v Bratislave, vo voľnom čase skúšam nové veci, učím sa programovať, designovať webové stránky a taktiež aj lietať s dronom. <br><br>
                  Popri týchto aktivitách chodím športovať a veľmi rád cestujem.</p>
 
                  <img src="./assets/images/blob.png" width="40%" style="opacity: 0.4; position: relative; left: 250px; top: 20px; transform: rotate(20deg);">
             </div>
-            <div class="card1" id="card3" style="background-color: #F3F3F3;">
+            <div class="card1" id="card3">
                 <h2 class="gradient-h2">CONTACT <br></h2>
                 
                 <ul class="social-icons icon-circle icon-zoom list-unstyled list-inline" style="text-align: center; margin-top: 70px;">
@@ -45,7 +47,7 @@
         </div>
 
         <div class="row">
-            <div class="card2" id="card4" style="background-color: #F3F3F3;">
+            <div class="card2" id="card4">
                 <h2 class="gradient-h2">EDUCATION <br></h2>
 
                 <p class="name-school"><i class="fa fa-star"></i> Stredná priemyselná škola Hálova 16, Bratislava <br> <span class="date">2018-2022</span><br><br>
@@ -53,7 +55,7 @@
 
                 <img src="./assets/images/blob.png" width="35%" style="opacity: 0.4; position: relative; left: 380px; bottom: 200px;">
             </div>
-            <div class="card2" id="card5" style="background-color: #F3F3F3;">
+            <div class="card2" id="card5">
                 <h2 class="gradient-h2">EXPERIENCES<br></h2>
 
                 <div class="container-exp">
@@ -71,7 +73,7 @@
                         </div>
                         <div class="part2">
                             <p>
-                                Trampoline flips - <span class="color" style="color: #FFBF7C;">40%</span> <br>
+                                Flips - <span class="color" style="color: #FFBF7C;">40%</span> <br>
                                 PC hardware - <span class="color" style="color: #FFBF7C;">40%</span> <br>
                                 Team management - <span class="color" style="color: #FFBF7C;">65%</span> <br>
                                 Playing games - <span class="color" style="color: #FFBF7C;">100%</span> <br>
@@ -86,18 +88,20 @@
         </div>
 
         <div class="row">
-            <div class="card3" id="card6" style="background-color: #F3F3F3;">
+            <div class="card3" id="card6">
                 <h2 class="gradient-h2">PROJECTS<br></h2>
+
+                
             </div>
         </div>
 
         <div class="row">
-            <div class="card4" id="card7" style="background-color: #F3F3F3;">
+            <div class="card4" id="card7">
                 <h2 class="gradient-h2">FOOTER<br></h2>
 
                 <div class="button">
                     <label>
-                        <input type="checkbox" id="click" onclick="dark()" />
+                        <input type="checkbox" id="button" />
                         <span class="check"></span>
                     </label>
                 </div>
@@ -105,46 +109,8 @@
             </div>
         </div>
     </div>
-    
+
+    <script src="./assets/js/app.js"></script>
+
 </body>
-
-<script type="text/javascript">
-    function dark() {
-        var a = document.getElementById("click");
-        var b = document.getElementsByTagName('body')[0];
-        var card1 = document.getElementById('card1');
-        var card2 = document.getElementById('card2');
-        var card3 = document.getElementById('card3');
-        var card4 = document.getElementById('card4');
-        var card5 = document.getElementById('card5');
-        var card6 = document.getElementById('card6');
-        var card7 = document.getElementById('card7');
-        var text = document.getElementsByTagName('h2')[0];
-        var text2 = document.getElementsByTagName('p')[0];
-
-        if (a.checked == true) {
-            b.style.background = "#554D56";
-            card1.style.background = "#353535"
-            card2.style.background = "#353535"
-            card3.style.background = "#353535"
-            card4.style.background = "#353535"
-            card5.style.background = "#353535"
-            card6.style.background = "#353535"
-            card7.style.background = "#353535"
-            text.style.color = "#F3F3F3"
-            text2.style.color = "#F3F3F3"
-        } else {
-            b.style.background = "#eee";
-            card1.style.background = "#F3F3F3"
-            card2.style.background = "#F3F3F3"
-            card3.style.background = "#F3F3F3"
-            card4.style.background = "#F3F3F3"
-            card5.style.background = "#F3F3F3"
-            card6.style.background = "#F3F3F3"
-            card7.style.background = "#F3F3F3"
-            text.style.color = "#000"
-            text2.style.color = "#000"
-        }
-    }
-</script>
 </html>
