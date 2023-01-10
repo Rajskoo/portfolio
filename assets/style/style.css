@@ -1,25 +1,25 @@
 
 :root {
-  --color-cards: #F3F3F3;
-
   --gradient-first: #ffafdb;
   --gradinet-second: #ffc3a0;
 
-  --color-icons: #ffc3a0;
+  --background-icons: #ffc3a0;
   --color-comment: #a2a2a2;
 }
 
 :root[data-color-scheme="dark"] {
-  --color-background-dark: #404258;
-  --color-cards-dark: #474E68;
+  --background: #404258;
+  --cards: #474E68;
+  --text: #eee;
+  --icons: #3d405b;
 }
 
 :root[data-color-scheme="default"] {
-  --color-background: #eee;
-  --color-text: #3d405b;
+  --background: #eee;
+  --cards: #F3F3F3;
+  --text: #3d405b;
+  --icons: #eee;
 }
-
-
 
 * {
     margin-left: auto;
@@ -58,33 +58,29 @@ span.name-h2 {
 	margin-bottom: 10px;
 }
 
-/*Change icons size here*/
-.social-icons .fa {
-	font-size: 1.8em;
-}
-/*Change icons circle size and color here*/
 .social-icons .fa {
 	width: 50px;
 	height: 50px;
 	line-height: 50px;
 	text-align: center;
-	color: #FFF;
+	color: var(--icons);
 	-webkit-transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
 	-ms-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
+
+  font-size: 1.8em;
 }
 
 .social-icons.icon-circle .fa{ 
 	border-radius: 50%;
 }
+
 .social-icons.icon-rounded .fa{
 	border-radius:5px;
 }
-.social-icons.icon-flat .fa{
-	border-radius: 0;
-}
+
 .social-icons.icon-zoom .fa:hover, .social-icons.icon-zoom .fa:active { 
  	-webkit-transform: scale(1.1);
 	-moz-transform: scale(1.1);
@@ -94,12 +90,12 @@ span.name-h2 {
 }
 
 .social-icons .fa-facebook, .fa-instagram, .fa-twitter, .fa-linkedin, .fa-envelope, .fa-github {
-  background-color: var(--color-icons);
+  background-color: var(--background-icons);
 }
 
 .name-school {
   margin-top: 45px;
-  margin-left: 15px;
+  margin-left: 100px;
 }
 
 span.date {
@@ -174,7 +170,7 @@ div.card1 {
   position: relative;
   flex: 1;
   max-width: 1540px;
-  height: 100px;
+  height: 120px;
   margin: 10px;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -186,7 +182,13 @@ div.card1 {
   align-items: center;
 
   position: relative;
-  bottom: 10px;
+  bottom: 25px;
+}
+
+.footer {
+  text-align: center;
+  position: relative;
+  bottom: 20px;
 }
 
 input[type="checkbox"] {
@@ -208,7 +210,7 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:checked ~ .check {
-  background: var(--color-text);
+  background: #404258;
 }
 
 .check::before {
@@ -245,46 +247,94 @@ input[type="checkbox"]:checked ~ .check:after {
   transform: translateX(0px);
 }
 
-
 @media (prefers-color-scheme: dark) {
   body {
-    background-color: var(--color-background-dark);
+    background-color: var(--background);
   }
 
   .card1, .card2, .card3, .card4 {
-    background-color: var(--color-cards-dark);
+    background-color: var(--cards);
   }
 
-  h2 {
-    color: #fff;
+  p, h2 {
+    color: var(--text);
   }
+}
 
-  p {
-    color: #fff;
-  }
+.img-me {
+  width: 40%;
+  border-radius: 50%;
   
-  .social-icons .fa a {
-    color: var(--color-text);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+  margin-top: 30px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: var(--background);
   }
 
-  .fa-star {
-    color: #fff;
+  .card1, .card2, .card3, .card4 {
+    background-color: var(--cards);
+  }
+
+  p, h2 {
+    color: var(--text);
   }
 }
 
 @media (max-width: 992px) {
   .card1 {
-    flex: 100%;
-    max-width: 600px;
+    flex: 1;
+    min-width: 300px;
+
+    font-size: 14px;
+  }
+
+  .img-me {
+    width: 35%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .blob1, .blob2, .blob3, .blob4 {
+    display: none;
   }
 
   .card2 {
-    flex: 100%;
-    max-width: 600px;
+    flex: 1;
+    min-width: 300px;
+
+    font-size: 14px;
   }
 
-  .card3 {
-    flex: 100%;
-    max-width: 600px;
+  .name-school {
+    margin-left: 10px;
+  }
+
+  .part1 {
+    flex: 1;
+    position: relative;
+    max-width: 300px;
+    height: 200px;
+  
+    margin: 10px;
+    line-height: 25px;
+  }
+
+  .part2 {
+    flex: 1;
+    position: relative;
+    max-width: 300px;
+    height: 200px;
+  
+    line-height: 25px;
+    margin: 10px;
   }
 }

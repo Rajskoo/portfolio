@@ -13,9 +13,7 @@ const getPreferredColorScheme = () => {
   document.documentElement.setAttribute("data-color-scheme", colorScheme);
 
   document.getElementById("button").onclick = () => {
-    const colorScheme = document.documentElement.getAttribute(
-      "data-color-scheme"
-    );
+    const colorScheme = document.documentElement.getAttribute("data-color-scheme");
     const newColorScheme = colorScheme === "default" ? "dark" : "default";
     document.documentElement.setAttribute("data-color-scheme", newColorScheme);
   
