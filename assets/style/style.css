@@ -31,6 +31,8 @@
 body {
   margin: 0;
   padding: 0;
+
+  overflow: hidden;
 }
 
 .gradient-h2 {
@@ -101,6 +103,10 @@ span.name-h2 {
 span.date {
   color: var(--color-comment);
   margin-left: 20px;
+}
+
+span.typtext1 {
+  text-align: center;
 }
 
 .row {
@@ -247,6 +253,18 @@ input[type="checkbox"]:checked ~ .check:after {
   transform: translateX(0px);
 }
 
+.img-me {
+  width: 40%;
+  border-radius: 50%;
+  
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+  margin-top: 30px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     background-color: var(--background);
@@ -259,18 +277,6 @@ input[type="checkbox"]:checked ~ .check:after {
   p, h2 {
     color: var(--text);
   }
-}
-
-.img-me {
-  width: 40%;
-  border-radius: 50%;
-  
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-
-  margin-top: 30px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 @media (prefers-color-scheme: light) {
