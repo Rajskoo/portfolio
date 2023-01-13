@@ -1,0 +1,213 @@
+:root {
+  --gradient-first: #ffafdb;
+  --gradinet-second: #ffc3a0;
+
+  --background-icons: #ffc3a0;
+  --color-comment: #a2a2a2;
+}
+
+:root[data-color-scheme="dark"] {
+  --background: #404258;
+  --cards: #474E68;
+  --text: #eee;
+  --icons: #3d405b;
+}
+
+:root[data-color-scheme="default"] {
+  --background: #eee;
+  --cards: #F3F3F3;
+  --text: #3d405b;
+  --icons: #eee;
+}
+
+@media (prefers-color-scheme: dark) {
+  .nav__menu a {
+    color: var(--text);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .nav__menu a {
+    color: var(--text);
+  }
+}
+
+.nav__toggle {
+  position: absolute;
+  cursor: pointer;
+  margin: 0rem 3rem;
+  right: 0;
+}
+
+.close,
+input[type="checkbox"] {
+  display: none;
+}
+.nav__menu {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+li {
+  list-style: none;
+  display: none;
+}
+
+.nav__menu a {
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.nav__menu a:hover {
+  color: var(--background-icons);
+  transition: 0.3s;
+}
+
+#nav__checkbox:checked ~ ul.nav__menu li {
+  display: block;
+}
+#nav__checkbox:checked ~ label.nav__toggle .hamburger {
+  display: none;
+}
+#nav__checkbox:checked ~ label.nav__toggle .close {
+  display: block;
+}
+
+@media only screen and (min-width: 768px) {
+  .nav__toggle {
+    display: none;
+  }
+  .nav__menu {
+    flex-direction: row;
+  }
+
+  .nav__menu li {
+    display: block;
+  }
+}
+
+@media(max-width: 767px) {
+  .menuIcon {
+    cursor: pointer;
+    display: block;
+    position: relative;
+    left: 15px;
+    top: 20px;
+    height: 23px;
+    width: 27px;
+    z-index: 12;
+  }
+
+  /* Icon Bars */
+  .icon-bars {
+    background: rgb(13, 26, 38);
+    position: absolute;
+    left: 1px;
+    top: 45%;
+    height: 2px;
+    width: 20px;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+  } 
+
+  .icon-bars::before {
+    background: rgb(13, 26, 38);
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -8px;
+    height: 2px;
+    width: 20px;
+    -webkit-transition: 0.3s width 0.4s;
+    transition: 0.3s width 0.4s;
+  }
+
+  .icon-bars::after {
+    margin-top: 0px;
+    background: rgb(13, 26, 38);
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    height: 2px;
+    width: 20px;
+    -webkit-transition: 0.3s width 0.4s;
+    transition: 0.3s width 0.4s;
+  }
+
+  /* Bars Shadows */
+  .icon-bars.overlay {
+    background: -webkit-linear-gradient( var(--gradient-first) , var(--gradinet-second) );
+    width: 20px;
+    animation: middleBar 3s infinite 0.5s;
+    -webkit-animation: middleBar 3s infinite 0.5s;
+  } @keyframes middleBar {
+      0% {width: 0px}
+      50% {width: 20px}
+      100% {width: 0px}
+    } @-webkit-keyframes middleBar {
+        0% {width: 0px}
+        50% {width: 20px}
+        100% {width: 0px}
+      }
+
+  .icon-bars.overlay::before {
+    background: -webkit-linear-gradient( var(--gradient-first) , var(--gradinet-second) );
+    width: 10px;
+    animation: topBar 3s infinite 0.2s;
+    -webkit-animation: topBar 3s infinite 0s;
+  } @keyframes topBar {
+      0% {width: 0px}
+      50% {width: 10px}
+      100% {width: 0px}
+    } @-webkit-keyframes topBar {
+        0% {width: 0px}
+        50% {width: 10px}
+        100% {width: 0px}
+      }
+
+  .icon-bars.overlay::after {
+    background: -webkit-linear-gradient( var(--gradient-first) , var(--gradinet-second) );
+    width: 15px;
+    animation: bottomBar 3s infinite 1s;
+    -webkit-animation: bottomBar 3s infinite 1s;
+  } @keyframes bottomBar {
+      0% {width: 0px}
+      50% {width: 15px}
+      100% {width: 0px}
+    } @-webkit-keyframes bottomBar {
+        0% {width: 0px}
+        50% {width: 15px}
+        100% {width: 0px}
+      }
+
+
+  /* Toggle Menu Icon */
+  .menuIcon.toggle .icon-bars {
+    top: 5px;
+    transform: translate3d(0, 5px, 0) rotate(135deg);
+    transition-delay: 0.1s;
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .menuIcon.toggle .icon-bars::before {
+    top: 0;
+    transition-delay: 0.1s;
+    opacity: 0;
+  }
+
+  .menuIcon.toggle .icon-bars::after {
+    top: 10px;
+    transform: translate3d(0, -10px, 0) rotate(-270deg);
+    transition-delay: 0.1s;
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .menuIcon.toggle .icon-bars.overlay {
+    width: 20px;
+    opacity: 0;
+    -webkit-transition: all 0s ease 0s;
+    transition: all 0s ease 0s;
+  }
+}

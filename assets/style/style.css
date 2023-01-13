@@ -31,8 +31,6 @@
 body {
   margin: 0;
   padding: 0;
-
-  overflow: hidden;
 }
 
 .gradient-h2 {
@@ -123,6 +121,12 @@ span.typtext1 {
   flex-wrap: wrap;
 }
 
+.row-form {
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+}
+
 .part1 {
   flex: 1;
   position: relative;
@@ -182,11 +186,21 @@ div.card1 {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
+.tutorials-card {
+  position: relative;
+  flex: 1;
+  max-width: 1540px;
+  min-height: 100px;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
 .tutorials-card1 {
   position: relative;
   flex: 1;
   max-width: 1540px;
-  height: 80px;
+  height: 100px;
   margin: 10px;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -196,7 +210,7 @@ div.card1 {
   position: relative;
   flex: 1;
   max-width: 1540px;
-  height: 80px;
+  height: 260px;
   margin: 10px;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -228,7 +242,7 @@ input[type="checkbox"] {
   display: block;
   width: 40px;
   height: 20px;
-  background: #404258;
+  background: #ffffff;
   cursor: pointer;
   border-radius: 20px;
   overflow: hidden;
@@ -243,8 +257,8 @@ input[type="checkbox"]:checked ~ .check {
   content: '';
   position: absolute;
   top: 2px;
+  background: #404258;
   left: 2px;
-  background-color: #fff;
   width: 16px;
   height: 16px;
   border-radius: 50%;
@@ -253,7 +267,6 @@ input[type="checkbox"]:checked ~ .check {
 
 input[type="checkbox"]:checked ~ .check:before {
   transform: translateX(-50px);
-  background-color: #fff;
 }
 
 .check::after {
@@ -285,23 +298,53 @@ input[type="checkbox"]:checked ~ .check:after {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  min-width: 160px;
-  border-radius: 15px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-  text-align: left;
+input[type=text], .textinput {
+  padding: 6px 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-.dropdown-content .text {
-  margin-left: 15px;
+.submit {
+  padding: 6px 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.dropdown:hover .dropdown-content {
-  display: block;
-  color: var(--text);
+.form {
+  position: relative;
+  bottom: 15px;
+}
+
+.test {
+  font-size: 15px;
+}
+
+.textinput {
+  outline: none;
+  resize: none;
+  height: 115px;
+  width: 200px;
+}
+
+.text-container {
+  margin-left: 150px;
+  margin-right: 150px;
+}
+
+.nadpis {
+  color: var(--gradinet-second);
+}
+
+.fa-xmark {
+  color: var(--gradinet-second);
+}
+
+.tab {
+  color: bisque;
+  margin-left: 10px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -309,7 +352,7 @@ input[type="checkbox"]:checked ~ .check:after {
     background-color: var(--background);
   }
 
-  .card1, .card2, .card3, .card4, .tutorials-card1, .tutorials-card2 {
+  .card1, .card2, .card3, .card4, .tutorials-card, .tutorials-card1, .tutorials-card2 {
     background-color: var(--cards);
   }
 
@@ -318,7 +361,11 @@ input[type="checkbox"]:checked ~ .check:after {
     color: var(--text);
   }
 
-  p, h2 {
+  p, h2, h3, h4 {
+    color: var(--text);
+  }
+
+  .test {
     color: var(--text);
   }
 }
@@ -328,7 +375,7 @@ input[type="checkbox"]:checked ~ .check:after {
     background-color: var(--background);
   }
 
-  .card1, .card2, .card3, .card4, .tutorials-card1, .tutorials-card2 {
+  .card1, .card2, .card3, .card4, .tutorials-card, .tutorials-card1, .tutorials-card2 {
     background-color: var(--cards);
   }
 
@@ -337,7 +384,11 @@ input[type="checkbox"]:checked ~ .check:after {
     color: var(--text);
   }
 
-  p, h2 {
+  p, h2, h3, h4 {
+    color: var(--text);
+  }
+
+  .test {
     color: var(--text);
   }
 }
@@ -435,5 +486,24 @@ input[type="checkbox"]:checked ~ .check:after {
   
     line-height: 25px;
     margin: 10px;
+  }
+
+  .text-container {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
+
+@media (max-width: 512px) {
+  .textinput {
+    outline: none;
+    resize: none;
+    height: 115px;
+  }
+}
+
+@media (max-width: 414px) {
+  .tutorials-card2 {
+    min-height: 410px
   }
 }

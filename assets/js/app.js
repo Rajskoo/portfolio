@@ -19,3 +19,27 @@ const getPreferredColorScheme = () => {
   
     localStorage.setItem("color-scheme", newColorScheme);
   };
+
+
+var btn = document.getElementById('btn');
+btn.addEventListener('click', function(e) {
+  e.preventDefault();
+
+  var name = document.getElementById('name').value;
+  var request = document.getElementById('request').value;
+  var body = document.getElementById('body').value;
+
+  Email.send({
+    Host : "smtp.elasticemail.com",
+    Username : "rajskoo.panel@gmail.com",
+    Password : "F376FA67884917BFD56FED50A9786F5AD0F6",
+    To : 'itsrajskosk@gmail.com',
+    From : "rajskoo.panel@gmail.com",
+    Subject : name + " - " + request,
+    Body : body
+  }).then(
+    message => alert("Email bol úspešne odoslaný!")
+  );
+  document.getElementById('form').reset();
+  document.getElementById('textinput').reset();
+});
