@@ -20,6 +20,18 @@ const getPreferredColorScheme = () => {
     localStorage.setItem("color-scheme", newColorScheme);
   };
 
+  var acc = document.getElementsByClassName('accordion');
+  for (var i = 0; i < acc.length; i++) {
+    acc[i].addEventListener('click', function() {
+      var panel = this.nextElementSibling;
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+      }
+    })
+  }
+
 
 var btn = document.getElementById('btn');
 btn.addEventListener('click', function(e) {
