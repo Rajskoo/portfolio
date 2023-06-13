@@ -71,11 +71,13 @@ section {
     text-align: center;
   }
 
-  section h1 {
+  section p.nadpis {
     text-align: center;
-    font-size: 30px;
+    font-size: 40px;
     position: relative;
-    top: 20px;
+    top: 140px;
+    left: 50px;
+    font-weight: 700;
   }
 
   .searchTerm {
