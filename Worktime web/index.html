@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style/style.css">
+
+    <script src="https://kit.fontawesome.com/4a45401ba7.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <title>Worktime Web</title>
+</head>
+<body>
+
+    <h2>Zápisník odpracovaného času</h2>
+
+    <div class="container-form">
+        <br>
+        <label class="label" for="fdatum">Dátum: </label>
+        <input id="datum" name="fdatum" type="text"> <br><br>
+
+        <label class="label" for="fprichod">Príchod: </label>
+        <input id="prichod" name="fprichod" type="text"> <br><br>
+
+        <label class="label" for="fodchod">Odchod: </label>
+        <input id="odchod" name="fodchod" type="text"> <br><br>
+    </div>
+
+    <div class="container-btns">
+        <button id="InsBtn">Pridať</button>
+        <button id="RmvBtn">Odstrániť všetky data</button>
+        <button class="btn" onclick="excelExport()">Exportovať</button>
+    </div>
+
+        <table id="mojaTabulka" class="styled-table">
+            <thead>
+                <th>Dátum</th>
+                <th>Príchod (h)</th>
+                <th>Odchod (h)</th>
+                <th>Celkový čas (h)</th>
+            </thead>
+            <tbody id="tbody1"></tbody>
+        </table>
+
+    <script type="text/javascript" src="JS/tabletoexcel.js"></script>
+    <script type="text/javascript" src="JS/script.js"></script>
+
+    <script type="module">
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js"; 
+
+        const firebaseConfig = {
+          apiKey: "AIzaSyDN30RSP4ghqz-eRemyXiY_Mi0v473TcGA",
+          authDomain: "admin-rajskoo.firebaseapp.com",
+          databaseURL: "https://admin-rajskoo-default-rtdb.europe-west1.firebasedatabase.app",
+          projectId: "admin-rajskoo",
+          storageBucket: "admin-rajskoo.appspot.com",
+          messagingSenderId: "220675175556",
+          appId: "1:220675175556:web:eafaee9de92b3e06c03ed1"
+        };
+
+        const app = initializeApp(firebaseConfig);
+
+        import { getDatabase, ref, set, remove, child, onValue, get } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-database.js"
+
+        const db = getDatabase();
+
+        var datum = document.getElementById('datum');
+        var prichod = document.getElementById('prichod');
+        var odchod = document.getElementById('odchod');
+
+        var insButton = document.getElementById('InsBtn');
+        var remButton = document.getElementById('RmvBtn');
+
+        function InsertData() {
+
+            const random = Math.random().toString(36).substring(2,7);
+
+            if ((datum == null) || (prichod == null) || (odchod == null)) {
+                alert("Nevyplnené pole, údaje neboli zapísané!");
+            } else {
+                set(ref(db, "WorkTimeList/"+random),{
+                Datum: datum.value,
+                Prichod: prichod.value,
+                Odchod: odchod.value,
+                Celkovo: (odchod.value - prichod.value)
+            }).then(() => {
+                alert("Data boli úspešne pridané!");
+            }).catch((error) => {
+                alert("Vyskytol sa error: " + error);
+            });
+
+            datum.value = "";
+            prichod.value = "";
+            odchod.value = "";
+            }   
+        }
+
+        function RemoveData() {
+            remove(ref(db, "WorkTimeList/")).then(() => {
+                alert("Data boli úspešne odstránené!");
+            }).catch((error) => {
+                alert("Vyskytol sa error: " + error);
+            });
+        }
+
+        insButton.addEventListener('click', InsertData);
+        remButton.addEventListener('click', RemoveData);
+
+        var stdNo = 0;
+        var tbody = document.getElementById('tbody1');
+        var button = document.getElementById('btn');
+
+        function addItemToTable(datum, prichod, odchod, celkovo) {
+
+            let trow = document.createElement('tr');
+            let td1 = document.createElement('td');
+            let td2 = document.createElement('td');
+            let td3 = document.createElement('td');
+            let td4 = document.createElement('td');
+            let td5 = document.createElement('td');
+
+            td1.innerHTML= datum;
+            td2.innerHTML= prichod;
+            td3.innerHTML= odchod;
+            td4.innerHTML= celkovo;
+
+            trow.appendChild(td1);
+            trow.appendChild(td2);
+            trow.appendChild(td3);
+            trow.appendChild(td4);
+
+            tbody.appendChild(trow);
+        }
+
+        function addAllItemsToTable(WorkTime) {
+            stdNo = 0;
+            tbody.innerHTML="";
+            WorkTime.forEach(element => {
+                addItemToTable(element.Datum, element.Prichod, element.Odchod, element.Celkovo);
+            });
+        }
+
+        function getAllDataOnce() {
+            const dbRef = ref(db);
+
+            get(child(dbRef, "WorkTimeList")).then((snapshot) => {
+                var days = [];
+                snapshot.forEach(childSnapshot => {
+                    days.push(childSnapshot.val());
+                });
+
+                addAllItemsToTable(days);
+            })
+        }
+
+        function getAllDataRealTime() {
+            const dbRef = ref(db, "WorkTimeList");
+
+            onValue(dbRef, (snapshot) => {
+                var days = [];
+                snapshot.forEach(childSnapshot => {
+                    days.push(childSnapshot.val());
+                });
+
+                addAllItemsToTable(days);
+            })
+        }
+
+        window.onload = getAllDataRealTime;
+      </script>
+    
+</body>
+</html>
